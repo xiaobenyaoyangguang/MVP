@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 import ch.co.my.mvp.cute.mvpsample.di.component.AppComponent;
+import ch.co.my.mvp.cute.mvpsample.di.component.DaggerAppComponent;
+import ch.co.my.mvp.cute.mvpsample.di.module.AppModule;
+import ch.co.my.mvp.cute.mvpsample.di.module.HttpModule;
 
 public class MvpApplication extends Application {
     private static MvpApplication sManagementApplication;
@@ -23,9 +26,9 @@ public class MvpApplication extends Application {
         super.onCreate();
         sManagementApplication = this;
 
-//        mAppComponent = DaggerAppComponent.builder()
-//                .appModule(new AppModule(this))
-//                .httpModule(new HttpModule(getApplicationContext()))
-//                .build();
+        mAppComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .httpModule(new HttpModule(getApplicationContext()))
+                .build();
     }
 }
